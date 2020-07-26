@@ -1,6 +1,5 @@
 /** @format */
 import React from "react";
-import { colors } from "../config/colors";
 
 const ProgressBar = (props) => {
   const { bgcolor, completed, height, styles, scores = 0, topBar } = props;
