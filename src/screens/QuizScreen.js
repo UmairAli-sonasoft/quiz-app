@@ -9,26 +9,20 @@ import { font } from "../config/font";
 import { quizData } from "../quizData";
 import ProgressBar from "../component/ProgressBar";
 import FinishScreen from "./FinishScreen";
+import { styles } from "../config/styles";
 
 const QuizScreen = () => {
   const [questionNumber, setQuestionNumber] = useState(1);
-  const [quizQuestion, setQuizQuestion] = useState(
-    quizData[questionNumber - 1]
-  );
+  console.log(quizData[questionNumber - 1]);
+  const [quizQuestion, setQuizQuestion] = useState(quizData[0]);
   const [selected, setSelected] = useState("");
   const [score, setScore] = useState(0);
   const [message, setMessage] = useState("");
   const [percentages, setPercentages] = useState(0);
   const [disableNext, setDisableNext] = useState(true);
 
-  const {
-    category,
-    difficulty,
-    question,
-    correct_answer,
-    incorrect_answers,
-    type,
-  } = quizQuestion || {};
+  const { category, difficulty, question, correct_answer, incorrect_answers } =
+    quizQuestion || {};
 
   const moveToNextQuestion = () => {
     setQuestionNumber((questionNum) => questionNum + 1);
@@ -48,7 +42,7 @@ const QuizScreen = () => {
   };
 
   useEffect(() => {
-    setQuizQuestion(quizData[questionNumber]);
+    setQuizQuestion(quizData[questionNumber - 1]);
     updateUserMessage();
   }, [selected, questionNumber, difficulty]);
 
@@ -78,7 +72,7 @@ const QuizScreen = () => {
     setMessage("");
     setScore(0);
     setSelected("");
-    setQuestionNumber(0);
+    setQuestionNumber(1);
   };
 
   if (!quizQuestion) return <FinishScreen onClick={resetGame} score={score} />;
@@ -105,14 +99,14 @@ const QuizScreen = () => {
           category={category}
           questionNumber={questionNumber}
           difficulty={difficulty}
+          totalQuestion={quizData.length}
         />
 
         <Question styles={style.question}>{question}</Question>
+
         <div
           style={{
-            display: "flex",
-            justifyContent: "center",
-            width: "100%",
+            ...styles.flexBoxProp,
           }}
         >
           <Options
@@ -125,9 +119,7 @@ const QuizScreen = () => {
 
         <div
           style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "center",
+            ...styles.flexBoxProp,
           }}
         >
           <Button
@@ -160,10 +152,8 @@ const style = {
   },
 
   status: {
+    ...styles.flexBoxProp,
     fontSize: font.headingTextSize,
-    display: "flex",
-    width: "100%",
-    justifyContent: "center",
     fontFamily: font.fontFamily,
     fontWeight: "bold",
     margin: 10,

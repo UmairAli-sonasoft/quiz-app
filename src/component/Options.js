@@ -30,25 +30,6 @@ const Options = ({ options, onClick, selected }) => {
       ))}
     </div>
   );
-  // return (
-  //   <div style={{ position: "relative" }}>
-  //     {options.map((option) => (
-  //       <Button
-  //         selected={selected}
-  //         value={option}
-  //         onClick={handleClick}
-  //         key={option}
-  //         title={option}
-  //         styles={{
-  //           margin: 20,
-  //           width: "40%",
-  //           backgroundColor: option === selected ? "black" : "white",
-  //           color: option === selected ? "white" : "black",
-  //         }}
-  //       />
-  //     ))}
-  //   </div>
-  // );
 };
 
 export default Options;

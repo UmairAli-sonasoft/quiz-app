@@ -1,13 +1,15 @@
 /** @format */
-import React, { useEffect } from "react";
+import React from "react";
 import { font } from "../config/font";
 import { colors } from "../config/colors";
 import { AiFillStar } from "react-icons/ai";
 
-function Header({ questionNumber, category, difficulty }) {
+function Header({ questionNumber, category, difficulty, totalQuestion }) {
   return (
     <div>
-      <div style={style.heading}>Question {questionNumber} of 20</div>
+      <div style={style.heading}>
+        Question {questionNumber} of {totalQuestion}
+      </div>
       <div style={style.subHeading}>{category}</div>
       <div style={style.icon}>
         {(difficulty === "easy" ||
