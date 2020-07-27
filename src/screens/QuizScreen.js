@@ -13,7 +13,6 @@ import { styles } from "../config/styles";
 
 const QuizScreen = () => {
   const [questionNumber, setQuestionNumber] = useState(1);
-  console.log(quizData[questionNumber - 1]);
   const [quizQuestion, setQuizQuestion] = useState(quizData[0]);
   const [selected, setSelected] = useState("");
   const [score, setScore] = useState(0);
@@ -102,7 +101,9 @@ const QuizScreen = () => {
           totalQuestion={quizData.length}
         />
 
-        <Question styles={style.question}>{question}</Question>
+        <Question styles={style.question}>
+          {decodeURIComponent(question)}
+        </Question>
 
         <div
           style={{

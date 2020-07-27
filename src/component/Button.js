@@ -13,7 +13,8 @@ function Button({ value, title, onClick, styles, disable }) {
     fontWeight: "bold",
     fontSize: font.size,
   };
-  console.log(disable);
+
+  const decodedTitle = decodeURIComponent(title).split(",");
   return (
     <button
       disabled={disable}
@@ -25,7 +26,7 @@ function Button({ value, title, onClick, styles, disable }) {
       }}
       onClick={(id) => onClick(id)}
     >
-      {title}
+      {decodedTitle}
     </button>
   );
 }

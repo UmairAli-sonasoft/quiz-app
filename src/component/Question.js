@@ -4,7 +4,8 @@ import React from "react";
 import { font } from "../config/font";
 
 const Question = ({ children, styles }) => {
-  return <p style={{ ...style.text, ...styles }}>{children}</p>;
+  const decode = decodeURIComponent(children);
+  return <p style={{ ...style.text, ...styles }}>{decode}</p>;
 };
 const style = {
   text: {
