@@ -44,12 +44,6 @@ const ProgressBar = (props) => {
     position: "absolute",
   };
 
-  const labelStyles = {
-    padding: 5,
-    color: "white",
-    fontWeight: "bold",
-  };
-
   return (
     <div style={{ ...mainContainerStyles, marginBottom: 50 }}>
       {!topBar && (
