@@ -5,12 +5,13 @@ import { colors } from "../config/colors";
 import { AiFillStar } from "react-icons/ai";
 
 function Header({ questionNumber, category, difficulty, totalQuestion }) {
+  const decodedCategory = decodeURIComponent(category);
   return (
     <div>
       <div style={style.heading}>
         Question {questionNumber} of {totalQuestion}
       </div>
-      <div style={style.subHeading}>{category}</div>
+      <div style={style.subHeading}>{decodedCategory}</div>
       <div style={style.icon}>
         {(difficulty === "easy" ||
           difficulty === "hard" ||
